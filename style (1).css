@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Space Grotesk', sans-serif;
+  background: linear-gradient(to bottom, #8000ff, #000);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+/* LOGIN */
+.login-container {
+  background: rgba(0,0,0,0.6);
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(128,0,255,0.7);
+}
+
+input {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  width: 200px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+button {
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  background: #8000ff;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #b266ff;
+}
+
+.categories {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+#gameList button {
+  margin: 5px;
+  background: #444;
+}
+
+canvas {
+  margin-top: 15px;
+  background: #111;
+  border-radius: 10px;
+  border: 2px solid #8000ff;
+}

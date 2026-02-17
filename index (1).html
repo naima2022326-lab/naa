@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phone Games Hub</title>
+
+  <!-- Space Grotesk -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginPage" class="login-container">
+  <h1>Enter Password</h1>
+  <input type="password" id="passwordInput" placeholder="Password">
+  <button onclick="checkPassword()">Enter</button>
+  <div id="errorMsg"></div>
+</div>
+
+<!-- HUB -->
+<div id="hub" class="hidden">
+  <h1>Game Categories</h1>
+
+  <div class="categories">
+    <button onclick="openCategory('social')">Social / Party</button>
+    <button onclick="openCategory('arcade')">Arcade</button>
+    <button onclick="openCategory('classic')">Classic</button>
+  </div>
+
+  <div id="gameList"></div>
+
+  <canvas id="gameCanvas" width="400" height="500"></canvas>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
