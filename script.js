@@ -6,35 +6,37 @@ const pw = document.getElementById("pw");
 const overlay = document.getElementById("overlay");
 const reader = document.getElementById("reader");
 
+/* HIDE LOGIN INITIALLY */
+loginEl.style.display = "none";
+
 /* LOGIN */
 function login() {
   if (pw.value === secret) {
-    showApp();
+    loginEl.style.display = "none";
+    appEl.style.display = "block";
   } else {
     alert("Incorrect password");
   }
 }
 
-/* ENTER KEY SUPPORT */
+/* ENTER KEY */
 pw.addEventListener("keydown", e => {
   if (e.key === "Enter") login();
 });
 
-/* SHOW APP */
-function showApp() {
-  loginEl.style.display = "none";
-  appEl.style.display = "block";
-}
-
-/* OPEN EXTENSIONS */
+/* OPEN EXTENSION */
 document.querySelectorAll(".card").forEach(card => {
   card.addEventListener("click", () => {
-    overlay.style.display = "block";
-    reader.src = card.dataset.url;
+    const url = card.dataset.url;
 
-    setTimeout(() => {
-      overlay.requestFullscreen?.();
-    }, 50);
+    if (url.includes("spinchat.com")) {
+      window.open(url, "_blank", "noopener,noreferrer");
+      return;
+    }
+
+    overlay.style.display = "block";
+    reader.src = url;
+    setTimeout(() => overlay.requestFullscreen?.(), 50);
   });
 });
 
@@ -46,26 +48,31 @@ document.addEventListener("fullscreenchange", () => {
   }
 });
 
-/* 🔧 SCROLL FIX */
-window.addEventListener("keydown", e => {
-  if (!document.fullscreenElement) return;
+/* ========== INTRO SEQUENCE ========== */
+const intro = document.getElementById("intro");
+const introText = document.getElementById("intro-text");
+const enterBtn = document.getElementById("enterBtn");
 
-  const url = reader.src || "";
-  if (url.includes("comix.to")) return;
+const message = "get ready to started to emerge yourselves";
+let i = 0;
 
-  const keys = ["ArrowDown", "ArrowUp", "PageDown", "PageUp"];
-  if (!keys.includes(e.key)) return;
+setTimeout(() => {
+  const type = setInterval(() => {
+    introText.textContent += message[i++];
+    if (i === message.length) {
+      clearInterval(type);
+      setTimeout(() => {
+        const del = setInterval(() => {
+          introText.textContent =
+            introText.textContent.slice(0, -1);
+          if (!introText.textContent) clearInterval(del);
+        }, 50);
+      }, 1200);
+    }
+  }, 60);
+}, 2300);
 
-  e.preventDefault();
-
-  try {
-    reader.contentWindow.scrollBy({
-      top:
-        e.key === "ArrowDown" ? 120 :
-        e.key === "ArrowUp" ? -120 :
-        e.key === "PageDown" ? 500 :
-        -500,
-      behavior: "smooth"
-    });
-  } catch {}
+enterBtn.addEventListener("click", () => {
+  intro.style.display = "none";
+  loginEl.style.display = "flex";
 });
