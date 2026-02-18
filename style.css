@@ -19,7 +19,7 @@ body {
   font-family: "Courier New", monospace;
 }
 
-/* ---------------- LOGIN ---------------- */
+/* LOGIN */
 #login{
   position:fixed;
   inset:0;
@@ -28,9 +28,7 @@ body {
   justify-content:center;
 }
 
-.login-box{
-  text-align:center;
-}
+.login-box{text-align:center;}
 
 #title{
   font-size:4.8rem;
@@ -39,10 +37,7 @@ body {
   text-shadow:0 0 40px rgba(139,92,246,.8);
 }
 
-.login-box p{
-  opacity:.7;
-  margin-bottom:30px;
-}
+.login-box p{opacity:.7;margin-bottom:30px;}
 
 input{
   padding:12px;
@@ -66,11 +61,8 @@ button{
   box-shadow:0 0 30px rgba(139,92,246,.6);
 }
 
-/* ---------------- APP ---------------- */
-#app{
-  display:none;
-  padding:50px;
-}
+/* APP */
+#app{display:none;padding:50px;}
 
 .layout{
   display:grid;
@@ -80,18 +72,9 @@ button{
   margin:auto;
 }
 
-.left h1{
-  font-size:4rem;
-  letter-spacing:5px;
-}
+.left h1{font-size:4rem;letter-spacing:5px;}
+.left p{opacity:.8;line-height:1.7;max-width:480px;}
 
-.left p{
-  opacity:.8;
-  line-height:1.7;
-  max-width:480px;
-}
-
-/* ---------------- EXTENSIONS ---------------- */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -113,11 +96,6 @@ button{
   box-shadow:0 30px 80px rgba(139,92,246,.35);
 }
 
-.card h3{
-  margin-bottom:6px;
-}
-
-/* ---------------- IFRAME ---------------- */
 #overlay{
   display:none;
   position:fixed;
@@ -130,6 +108,70 @@ button{
   width:100%;
   height:100%;
   border:none;
-  overscroll-behavior: contain;
-  scroll-behavior: smooth;
 }
+
+/* ================= CINEMATIC INTRO ================= */
+
+#intro{
+  position:fixed;
+  inset:0;
+  background:black;
+  z-index:10000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  overflow:hidden;
+}
+
+#vexo-intro{
+  font-size:6rem;
+  letter-spacing:10px;
+  color:white;
+  text-shadow:0 0 80px #8b5cf6;
+  animation:vexoIn 2.2s ease forwards;
+}
+
+@keyframes vexoIn{
+  0%{transform:scale(.1);opacity:0;}
+  60%{transform:scale(1.4);opacity:1;}
+  100%{transform:scale(.2);opacity:0;}
+}
+
+#intro-text{
+  font-family:"Courier New", monospace;
+  color:#b794f4;
+  font-size:1.2rem;
+  margin-top:30px;
+}
+
+#stars{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(1px 1px at 20% 30%, white, transparent),
+    radial-gradient(1px 1px at 70% 80%, white, transparent),
+    radial-gradient(1px 1px at 40% 60%, white, transparent),
+    radial-gradient(1px 1px at 90% 20%, white, transparent);
+  opacity:0;
+  animation:starsFade 3s ease forwards;
+  animation-delay:6s;
+}
+
+@keyframes starsFade{to{opacity:1;}}
+
+#enterBtn{
+  opacity:0;
+  margin-top:60px;
+  padding:14px 40px;
+  font-size:1.1rem;
+  letter-spacing:4px;
+  background:transparent;
+  border:2px solid #8b5cf6;
+  color:white;
+  cursor:pointer;
+  animation:enterFade 1s ease forwards;
+  animation-delay:8.5s;
+}
+
+@keyframes enterFade{to{opacity:1;}}
